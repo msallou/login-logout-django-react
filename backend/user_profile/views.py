@@ -10,7 +10,6 @@ class GetUserProfileView(APIView):
         try:
             user = self.request.user
             username = user.username
-            user = User.objects.get(id = user.id) # gets instance of user
 
             user_profile = UserProfile.objects.get(user=user)
 
@@ -32,7 +31,6 @@ class UpdateUserProfileView(APIView):
             last_name = data['last_name']
             email = data['email']
 
-            user = User.objects.get(id = user.id) # gets instance of user
 
             UserProfile.objects.filter(user=user).update(first_name=first_name, last_name=last_name, email=email)
 

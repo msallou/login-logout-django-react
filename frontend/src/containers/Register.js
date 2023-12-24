@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { register } from "../actions/auth";
 import { connect } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate,  Link} from "react-router-dom";
+import CSRFToken from '../components/CSRFToken'
 
 const Register = ({ register }) => {
   const [formData, setFormData] = useState({
@@ -38,8 +39,9 @@ const Register = ({ register }) => {
         <h1>Register</h1>
         <p>Create a Math Wizard Account</p>
         <form onSubmit={e => onSubmit(e)}>
+          <CSRFToken />
             <div className="form-group">
-                <label className="form-label">Username: </label>
+                <label className="form-label mt-3">Username: </label>
                 <input
                 className="form-control"
                 type="text"
@@ -52,7 +54,7 @@ const Register = ({ register }) => {
             </div>
             
             <div className="form-group">
-                <label className="form-label">First Name: </label>
+                <label className="form-label mt-3">First Name: </label>
                 <input
                 className="form-control"
                 type="text"
@@ -64,7 +66,7 @@ const Register = ({ register }) => {
                 />
             </div>
             <div className="form-group">
-                <label className="form-label">Last Name: </label>
+                <label className="form-label mt-3">Last Name: </label>
                 <input
                 className="form-control"
                 type="text"
@@ -76,7 +78,7 @@ const Register = ({ register }) => {
                 />
             </div>
             <div className="form-group">
-                <label className="form-label">Email: </label>
+                <label className="form-label mt-3">Email: </label>
                 <input
                 className="form-control"
                 type="text"
@@ -88,7 +90,7 @@ const Register = ({ register }) => {
                 />
             </div>
             <div className="form-group">
-                <label className="form-label">Password: </label>
+                <label className="form-label mt-3">Password: </label>
                 <input
                 className="form-control"
                 type="password"
@@ -101,7 +103,7 @@ const Register = ({ register }) => {
                 />
             </div>
             <div className="form-group">
-                <label className="form-label">Confirm Password: </label>
+                <label className="form-label mt-3">Confirm Password: </label>
                 <input
                 className="form-control"
                 type="password"
@@ -113,8 +115,11 @@ const Register = ({ register }) => {
                 required
                 />
             </div>
-
+            <button className="btn btn-primary mt-4" type="submit">Register</button>
         </form>
+        <p className="mt-3">
+          Already have an account? <Link to='/login'>Sign in</Link>
+        </p>
     </div>
   )
 };
