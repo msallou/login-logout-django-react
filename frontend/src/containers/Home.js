@@ -8,8 +8,9 @@ const Home = () => {
                 <h1 className="display-4">Welcome to Math Wizards</h1>
                 <p className="lead">App in React & Django</p>
                 <hr className="my-4" />
-                <p>Click the button below to log in</p>
-                <Link className="btn btn-primary btn-lg" to='/login'>Login</Link>
+                <p>Log In or Sign Up below!</p>
+                <Link className="btn btn-primary btn-lg" to='/login'>Log In</Link><br/><br/><br/>
+                <Link className="btn btn-primary btn-lg" to='/register'>Sign Up</Link>
 
             </div>
         </div>

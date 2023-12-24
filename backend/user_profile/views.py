@@ -1,5 +1,4 @@
 from rest_framework.views import APIView
-from django.contrib.auth.models import User
 from rest_framework.response import Response
 from user_profile.models import UserProfile
 from .serializers import UserProfileSerializer

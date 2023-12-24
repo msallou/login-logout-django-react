@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework import permissions
@@ -14,8 +15,9 @@ from .serializers import UserSerializer
 @method_decorator(csrf_protect, name='dispatch')
 class CheckAuthenticatedView(APIView):
     def get(self, request, format=None):
+        user = self.request.user
         try:
-            isAuthenticated = User.is_authenticated
+            isAuthenticated = user.is_authenticated
 
             if isAuthenticated:
                 return Response({'isAuthenticated': 'success'})
@@ -49,11 +51,9 @@ class SignupView(APIView):
                         return Response({'error': 'Password must be at least 6 characters'})
                     else:
                         user = User.objects.create_user(username=username, password=password)
-                        user.save()
 
                         user = User.objects.get(id=user.id)
-                        user_profile = UserProfile(user=user, first_name=first_name, last_name=last_name, email=email)
-                        user_profile.save()
+                        UserProfile.objects.create(user=user, first_name=first_name, last_name=last_name, email=email)
 
                         return Response({'success', 'User created successfully'})
             else:
